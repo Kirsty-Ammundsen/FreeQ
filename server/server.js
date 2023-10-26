@@ -10,6 +10,8 @@ const server = express()
 
 const __filename = URL.fileURLToPath(import.meta.url)
 const __dirname = Path.dirname(__filename)
+const publicFolder = Path.resolve('public')
+server.use(express.static(publicFolder))
 
 // Middleware
 server.engine('hbs', handlebars.engine({ extname: 'hbs' }))
@@ -17,7 +19,21 @@ server.set('view engine', 'hbs')
 server.set('views', Path.join(__dirname, 'views'))
 server.use(express.urlencoded({ extended: true }))
 
-// Routes
-server.use('/', userRoutes)
+// Server
+server.get('/', async (req, res) => {
+  const viewData = {
+    businesses: [
+      { name: 'BarberShop', logo: 'barber.png' },
+      { name: 'Cute Doctors', logo: 'hospital.png' },
+      { name: 'Vampire Phlebs', logo: 'blood-test.png' },
+    ],
+  }
+
+  try {
+    res.render('index', viewData)
+  } catch (err) {
+    res.status(500).send('DATABASE ERROR: ' + err.message)
+  }
+})
 
 export default server
