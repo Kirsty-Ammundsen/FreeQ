@@ -1,9 +1,12 @@
 
 <div class="container">
   {{#each businesses}}
+  <a href="business/{{id}}">
   <div class="business">
-  {{name}} 
-  <img class="logo" src='/logos/{{logo}}' alt={{name}}>
+    
+      {{name}} 
+      <img class="logo" src='/logos/{{logo}}' alt={{name}}>
   </div>
+    </a>
   {{/each}}
 </div>

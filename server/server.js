@@ -23,9 +23,9 @@ server.use(express.urlencoded({ extended: true }))
 server.get('/', async (req, res) => {
   const viewData = {
     businesses: [
-      { name: 'BarberShop', logo: 'barber.png' },
-      { name: 'Cute Doctors', logo: 'hospital.png' },
-      { name: 'Vampire Phlebs', logo: 'blood-test.png' },
+      { id: 1, name: 'BarberShop', logo: 'barber.png' },
+      { id: 2, name: 'Cute Doctors', logo: 'hospital.png' },
+      { id: 3, name: 'Vampire Phlebs', logo: 'blood-test.png' },
     ],
   }
 
