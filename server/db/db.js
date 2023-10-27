@@ -25,6 +25,14 @@ export async function getTicketCount(id) {
     .first()
 }
 
+export async function addUser(name, email) {
+  return db('users').insert({ name, email })
+}
+
+export async function addTicket(user_id, business_id) {
+  return db('tickets').insert({ user_id, business_id })
+}
+
 export async function getAllBusinesses() {
   return await db('businesses').select()
 }
