@@ -1,8 +1,15 @@
 
-<div class="container">
-  {{#each businesses}}
-  <div >
-    
+<div class="queue">
+  {{#each tickets}}
+   <img class="logo" src='/logos/{{logo}}' alt={{name}}>
+  <h2><a href="mailto:{{email}}">{{name}}</a></h2>
+  <div>{{queue}} people in the queue</div>
+  <div>Estimated wait: x minutes</div>
+  <form action="" method="POST">
+    <button class="btn-join">Join queue</button>
+  </form>
+  <div>
+    <a href="/">Back to main menu</a>
   </div>
   {{/each}}
 </div>
