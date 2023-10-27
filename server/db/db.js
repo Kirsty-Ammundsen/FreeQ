@@ -12,3 +12,7 @@ export async function getUsers() {
 export async function getUser(id) {
   return db('users').where('id', id).first()
 }
+
+export async function getBusiness(id) {
+  return db('businesses').where('id', id).first()
+}
