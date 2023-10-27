@@ -45,6 +45,7 @@ server.get('/business/:id', async (req, res) => {
     const viewData = {
       tickets: [
         {
+          id: business.id,
           name: business.name,
           logo: business.logo,
           email: business.email,
@@ -59,11 +60,22 @@ server.get('/business/:id', async (req, res) => {
   }
 })
 
-server.post('/checkin/:id', async (req, res) => {
+server.get('/business/checkin/:id', async (req, res) => {
+  const id = req.params.id
+  const business = await db.getBusiness(id)
+  const viewData = { business }
+  res.render('checkin', viewData)
+})
+
+server.post('/business/checkin/:id', async (req, res) => {
   const { name, email } = req.body
-  const addCustomer = { name, email }
-  await db.business(addCustomer)
-  res.redirect('/business')
+  console.log(req.params.id)
+  const business_id = req.params.id
+  const user_id = await db.addUser(name, email)
+  console.log('user', user_id[0])
+  console.log('business', business_id)
+  await db.addTicket(user_id[0], business_id)
+  res.redirect(`/business/${business_id}`)
 })
 
 export default server
