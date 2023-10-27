@@ -1,14 +1,15 @@
-<form class="form" action="/business/checkin/{{business.id}}" method="post">
-<h1>{{business.name}}</h1>
+<form class="queue" action="/business/checkin/{{business.id}}" method="post">
+<img class="logo" src='/logos/{{business.logo}}' alt={{business.name}}>
+ <h2><a href="mailto:{{business.email}}">{{business.name}}</a></h2>
   <label for="name" class="form-item">
     Customer name:
     <input type="text" name="name" id="name" >
   </label>
-  
   <label for="email" class="form-item">
     Customer email:
     <input type="text" name="email" id="email">
   </label>
-  
-  <input type="submit" value="Submit">
+  <br>
+  <br>
+  <input class="btn-join" type="submit" value="Submit">
 </form>

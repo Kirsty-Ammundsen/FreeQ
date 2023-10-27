@@ -85,3 +85,7 @@ a:hover {
   color: white;
   font-size: 18px;
 }
+
+.form {
+  text-align: center;
+}
