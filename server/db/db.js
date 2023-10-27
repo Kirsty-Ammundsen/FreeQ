@@ -24,3 +24,7 @@ export async function getTicketCount(id) {
     .count('tickets.id as count')
     .first()
 }
+
+export async function getAllBusinesses() {
+  return await db('businesses').select()
+}

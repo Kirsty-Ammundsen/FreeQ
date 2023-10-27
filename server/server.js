@@ -22,19 +22,9 @@ server.use(express.urlencoded({ extended: true }))
 
 // Server
 server.get('/', async (req, res) => {
-  const viewData = {
-    businesses: [
-      { id: 1, name: 'BarberShop', logo: 'barber.png' },
-      { id: 2, name: 'Cute Doctors', logo: 'hospital.png' },
-      { id: 3, name: 'Vampire Phlebs', logo: 'blood-test.png' },
-    ],
-  }
-
-  try {
-    res.render('index', viewData)
-  } catch (err) {
-    res.status(500).send('DATABASE ERROR: ' + err.message)
-  }
+  const businessesArray = await db.getAllBusinesses()
+  const viewData = { businesses: businessesArray }
+  res.render('index', viewData)
 })
 
 server.get('/business/:id', async (req, res) => {
