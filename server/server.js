@@ -63,4 +63,11 @@ server.get('/business/:id', async (req, res) => {
   }
 })
 
+server.post('/checkin/:id', async (req, res) => {
+  const { name, email } = req.body
+  const addCustomer = { name, email }
+  await db.business(addCustomer)
+  res.redirect('/business')
+})
+
 export default server

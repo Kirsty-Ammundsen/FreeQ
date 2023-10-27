@@ -1,0 +1,14 @@
+<form class="form" action="business/edit/{{id}}" method="post">
+{{business.name}}
+  <label for="name" class="form-item">
+    Customer name:
+    <input type="text" name="name" id="name" value="{{user.name}}">
+  </label>
+  
+  <label for="email" class="form-item">
+    Customer email:
+    <input type="text" name="email" id="email" value="{{user.email}}">
+  </label>
+  
+  <input type="submit" value="Submit">
+</form>
