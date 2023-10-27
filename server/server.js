@@ -38,20 +38,6 @@ server.get('/', async (req, res) => {
 })
 
 server.get('/business/:id', async (req, res) => {
-  // const viewData = {
-  //   tickets: [
-  //     {
-  //       name: 'BarberShop',
-  //       logo: 'barber.png',
-  //       email: 'ssss@ss.com',
-  //       avg_appointment_time_mins: 15,
-  //       queue: 5,
-  //     },
-  //   ],
-  // }
-
-  // tickets.join('businesses')
-
   try {
     const id = req.params.id
     const ticketCount = await db.getTicketCount(id)
@@ -67,8 +53,6 @@ server.get('/business/:id', async (req, res) => {
         },
       ],
     }
-    console.log(viewData)
-    console.log(ticketCount)
     res.render('business', viewData)
   } catch (err) {
     res.status(500).send('DATABASE ERROR: ' + err.message)
