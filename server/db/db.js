@@ -16,3 +16,11 @@ export async function getUser(id) {
 export async function getBusiness(id) {
   return db('businesses').where('id', id).first()
 }
+
+export async function getTicketCount(id) {
+  return db('tickets')
+    .join('businesses', 'tickets.business_id', 'businesses.id')
+    .where('tickets.business_id', id)
+    .count('tickets.id as count')
+    .first()
+}
