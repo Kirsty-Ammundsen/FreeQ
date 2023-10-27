@@ -1,8 +1,11 @@
 
-<div class="container">
-  {{#each businesses}}
-  <div >
-    
-  </div>
+<div class="queue">
+  {{#each tickets}}
+   <img class="logo" src='/logos/{{logo}}' alt={{name}}>
+  <div>{{name}}</div>
+  <div>{{email}}</div>
+  <div>{{queue}} people in the queue</div>
+  <div>{{avg_appointment_time_mins}} minutes/person</div>
+  <div>Estimated wait time: x minutes</div>
   {{/each}}
 </div>
